@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  title: Star Wars API
+  version: 1.0.0
+  description: API para listar personajes de Star Wars
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+paths:
+  /films:
+    get:
+      summary: Obtiene la lista paginada de películas de Star Wars
+      responses:
+        '200':
+          description: Lista de películas
+  /films/{id}:
+    get:
+      summary: Obtiene los detalles de una película específica por su ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID de la película
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalles de la película
+  /people:
+    get:
+      summary: Obtiene la lista paginada de personajes de Star Wars
+      parameters:
+        - in: query
+          name: search
+          description: Filtro de búsqueda por nombre
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de personajes
+  /people/{id}:
+    get:
+      summary: Obtiene los detalles de un personaje específico por su ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID del personaje
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalles del personaje
+  /planets:
+    get:
+      summary: Obtiene la lista paginada de planetas de Star Wars
+      responses:
+        '200':
+          description: Lista de planetas
+  /planets/{id}:
+    get:
+      summary: Obtiene los detalles de un planeta específico por su ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID del planeta
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalles del planeta
+  /species:
+    get:
+      summary: Obtiene la lista paginada de especies de Star Wars
+      responses:
+        '200':
+          description: Lista de especies
+  /species/{id}:
+    get:
+      summary: Obtiene los detalles de una especie específica por su ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID de la especie
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalles de la especie
+  /starships:
+    get:
+      summary: Obtiene la lista paginada de naves espaciales de Star Wars
+      responses:
+        '200':
+          description: Lista de naves espaciales
+  /starships/{id}:
+    get:
+      summary: Obtiene los detalles de una nave espacial específica por su ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID de la nave espacial
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalles de la nave espacial
+  /vehicles:
+    get:
+      summary: Obtiene la lista paginada de vehículos de Star Wars
+      responses:
+        '200':
+          description: Lista de vehículos
+  /vehicles/{id}:
+    get:
+      summary: Obtiene los detalles de un vehículo específico por su ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID del vehículo
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalles del vehículo

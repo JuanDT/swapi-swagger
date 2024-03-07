@@ -1,21 +1,50 @@
-const axios = require('axios');
 
-const getPlanetsList = async (req, res) => {
-  try {
-    const response = await axios.get('https://swapi.dev/api/planets/');
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener la lista de planetas' });
-  }
+const planetsData = [
+  {
+    id: 1,
+    name: 'Tatooine',
+    climate: 'Arid',
+  },
+  {
+    id: 2,
+    name: 'Alderaan',
+    climate: 'Temperate',
+  },
+  {
+    id: 3,
+    name: 'Yavin IV',
+    climate: 'Temperate, Tropical',
+  },
+  {
+    id: 4,
+    name: 'Hoth',
+    climate: 'Frozen',
+  },
+  {
+    id: 5,
+    name: 'Dagobah',
+    climate: 'Murky',
+  },
+  {
+    id: 6,
+    name: 'Endor',
+    climate: 'Temperate, Forest',
+  },
+];
+
+
+const getPlanetsList = (req, res) => {
+  res.json(planetsData);
 };
 
-const getPlanetDetails = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const response = await axios.get(`https://swapi.dev/api/planets/${id}/`);
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener los detalles del planeta' });
+const getPlanetDetails = (req, res) => {
+  const id = parseInt(req.params.id);
+  const planet = planetsData.find(planet => planet.id === id);
+
+  if (!planet) {
+    res.status(404).send('Planeta no encontrado');
+  } else {
+    res.json(planet);
   }
 };
 

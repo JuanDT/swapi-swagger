@@ -1,12 +1,14 @@
+// filmsRoutes.js
+
 const express = require('express');
 const router = express.Router();
 const filmsController = require('../controllers/filmsController');
 
 /**
- * @swagger
- * /films/api/films:
+ * @openapi
+ * /films:
  *   get:
- *     summary: Obtiene la lista paginada de películas de Star Wars
+ *     summary: Obtiene la lista de películas simulada
  *     tags:
  *       - Films
  *     responses:
@@ -16,10 +18,10 @@ const filmsController = require('../controllers/filmsController');
 router.get('/api/films', filmsController.getFilmsList);
 
 /**
- * @swagger
- * /films/api/films/{id}:
+ * @openapi
+ * /films/{id}:
  *   get:
- *     summary: Obtiene los detalles de una película específica por su ID
+ *     summary: Obtiene los detalles de una película simulada por su ID
  *     tags:
  *       - Films
  *     parameters:

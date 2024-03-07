@@ -1,12 +1,14 @@
+// vehiclesRoutes.js
+
 const express = require('express');
 const router = express.Router();
 const vehiclesController = require('../controllers/vehiclesController');
 
 /**
- * @swagger
- * /vehicles/api/vehicles:
+ * @openapi
+ * /vehicles:
  *   get:
- *     summary: Obtiene la lista paginada de vehículos de Star Wars
+ *     summary: Obtiene la lista de vehículos simulada
  *     tags:
  *       - Vehicles
  *     responses:
@@ -16,10 +18,10 @@ const vehiclesController = require('../controllers/vehiclesController');
 router.get('/api/vehicles', vehiclesController.getVehiclesList);
 
 /**
- * @swagger
- * /vehicles/api/vehicles/{id}:
+ * @openapi
+ * /vehicles/{id}:
  *   get:
- *     summary: Obtiene los detalles de un vehículo específico por su ID
+ *     summary: Obtiene los detalles de un vehículo simulado por su ID
  *     tags:
  *       - Vehicles
  *     parameters:

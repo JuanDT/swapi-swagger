@@ -1,18 +1,26 @@
+// app.js
+
 const express = require('express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const filmsRoutes = require('./src/routes/filmsRoutes');
+const peopleRoutes = require('./src/routes/peopleRoutes');
+const planetsRoutes = require('./src/routes/planetsRoutes');
+const speciesRoutes = require('./src/routes/speciesRoutes');
+const starshipsRoutes = require('./src/routes/starshipsRoutes');
+const vehiclesRoutes = require('./src/routes/vehiclesRoutes');
 
 const app = express();
 const port = 3000;
 
-// Configuración de Swagger para todas las entidades
+// Configuración de Swagger
 const swaggerOptions = {
   swaggerDefinition: {
     openapi: '3.0.0',
     info: {
       title: 'Star Wars API',
       version: '1.0.0',
-      description: 'API para listar personajes y elementos de Star Wars',
+      description: 'API para listar personajes de Star Wars',
     },
     servers: [
       {
@@ -35,13 +43,13 @@ const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Rutas para cada entidad
-app.use('/api/films', require('./src/routes/filmsRoutes'));
-app.use('/api/people', require('./src/routes/peopleRoutes'));
-app.use('/api/planets', require('./src/routes/planetsRoutes'));
-app.use('/api/species', require('./src/routes/speciesRoutes'));
-app.use('/api/starships', require('./src/routes/starshipsRoutes'));
-app.use('/api/vehicles', require('./src/routes/vehiclesRoutes'));
+// Rutas
+app.use(filmsRoutes);
+app.use(peopleRoutes);
+app.use(planetsRoutes);
+app.use(speciesRoutes);
+app.use(starshipsRoutes);
+app.use(vehiclesRoutes);
 
 // Iniciar el servidor
 app.listen(port, () => {

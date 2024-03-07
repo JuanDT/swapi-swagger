@@ -1,12 +1,14 @@
+// planetsRoutes.js
+
 const express = require('express');
 const router = express.Router();
 const planetsController = require('../controllers/planetsController');
 
 /**
- * @swagger
- * /planets/api/planets:
+ * @openapi
+ * /planets:
  *   get:
- *     summary: Obtiene la lista paginada de planetas de Star Wars
+ *     summary: Obtiene la lista de planetas simulada
  *     tags:
  *       - Planets
  *     responses:
@@ -16,10 +18,10 @@ const planetsController = require('../controllers/planetsController');
 router.get('/api/planets', planetsController.getPlanetsList);
 
 /**
- * @swagger
- * /planets/api/planets/{id}:
+ * @openapi
+ * /planets/{id}:
  *   get:
- *     summary: Obtiene los detalles de un planeta específico por su ID
+ *     summary: Obtiene los detalles de un planeta simulado por su ID
  *     tags:
  *       - Planets
  *     parameters:

@@ -1,21 +1,50 @@
-const axios = require('axios');
 
-const getVehiclesList = async (req, res) => {
-  try {
-    const response = await axios.get('https://swapi.dev/api/vehicles/');
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener la lista de vehículos' });
-  }
+const vehiclesData = [
+  {
+    id: 1,
+    name: 'Speeder bike',
+    model: '74-Z speeder bike',
+  },
+  {
+    id: 2,
+    name: 'AT-AT',
+    model: 'All Terrain Armored Transport',
+  },
+  {
+    id: 3,
+    name: 'Snowspeeder',
+    model: 'T-47 airspeeder',
+  },
+  {
+    id: 4,
+    name: 'Imperial Speeder Bike',
+    model: '74-Z speeder bike',
+  },
+  {
+    id: 5,
+    name: 'Sandcrawler',
+    model: 'Digger Crawler',
+  },
+  {
+    id: 6,
+    name: 'Imperial Speeder Bike',
+    model: '74-Z speeder bike',
+  },
+];
+
+
+const getVehiclesList = (req, res) => {
+  res.json(vehiclesData);
 };
 
-const getVehicleDetails = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const response = await axios.get(`https://swapi.dev/api/vehicles/${id}/`);
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener los detalles del vehículo' });
+const getVehicleDetails = (req, res) => {
+  const id = parseInt(req.params.id);
+  const vehicle = vehiclesData.find(vehicle => vehicle.id === id);
+
+  if (!vehicle) {
+    res.status(404).send('Vehículo no encontrado');
+  } else {
+    res.json(vehicle);
   }
 };
 

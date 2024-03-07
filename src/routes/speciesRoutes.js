@@ -1,12 +1,14 @@
+// speciesRoutes.js
+
 const express = require('express');
 const router = express.Router();
 const speciesController = require('../controllers/speciesController');
 
 /**
- * @swagger
- * /species/api/species:
+ * @openapi
+ * /species:
  *   get:
- *     summary: Obtiene la lista paginada de especies de Star Wars
+ *     summary: Obtiene la lista de especies simulada
  *     tags:
  *       - Species
  *     responses:
@@ -16,10 +18,10 @@ const speciesController = require('../controllers/speciesController');
 router.get('/api/species', speciesController.getSpeciesList);
 
 /**
- * @swagger
- * /species/api/species/{id}:
+ * @openapi
+ * /species/{id}:
  *   get:
- *     summary: Obtiene los detalles de una especie específica por su ID
+ *     summary: Obtiene los detalles de una especie simulada por su ID
  *     tags:
  *       - Species
  *     parameters:
